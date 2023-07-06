@@ -39,7 +39,7 @@ const Map = () => {
       console.log('Error: ', err.message);
     }
        
-  },[])  
+  },[idno,chvalue])  
   
   return (
     
