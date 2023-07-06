@@ -1,0 +1,25 @@
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+.row:after {
+  display: flex;
+}
+/* .chtext{
+  text-align: center;
+  padding: 6px 0;
+} */
+
+.dateform {
+  float: right;
+  margin-right: 400px;
+}
