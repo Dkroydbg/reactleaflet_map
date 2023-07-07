@@ -13,8 +13,8 @@ import Moment from 'moment';
 
 
 
-const DateRangeComp = () => {
-
+const DateRangeComp = (props) => {
+  
   // date state
   const [idno,setidno]=useState();
   const [argtype,setargtype]=useState("");
@@ -23,8 +23,8 @@ const DateRangeComp = () => {
   const [endDate,setEndDate]=useState(null);
 
 
+  
   const dates = [];
-   
   const fetchdata=((key,argtype,datearr,option)=>{
     let sum=0
     let denominator=0
@@ -104,22 +104,23 @@ const DateRangeComp = () => {
         return sum/denominator
     }
   });
-
  
 useEffect(()=>{
-  // console.log(chvalue);
-  // console.log(idno);
-  window.localStorage.setItem('item1',JSON.stringify(idno));
-  window.localStorage.setItem('item2',JSON.stringify(chvalue));
-  console.log(localStorage)
+  
+   
+ 
+
+  const value=fetchdata(idno,'','','id');
+    console.log(value);
+    setchvalue(value);
 },[idno,chvalue])
 
   const handleSubmit=(e)=>{
     e.preventDefault();
     // console.log(idno);
-    console.log(argtype);
-    console.log(startDate);
-    console.log(endDate);
+    // console.log(argtype);
+    // console.log(startDate);
+    // console.log(endDate);
     console.log(Moment(startDate).format('YYYY-MM-DD'))
     const date = new Date(startDate.getTime());
     
@@ -132,9 +133,7 @@ useEffect(()=>{
     console.log(dates);
 
   
-    const value=fetchdata(idno,'','','id');
-    // console.log(value);
-    setchvalue(value);
+    
   }
 
   // const MapWithNoSSR = dynamic(() => import("../components/Map"), {
@@ -169,7 +168,7 @@ useEffect(()=>{
           <form onSubmit={handleSubmit}>
           ID: <input type="number" onChange={(e)=>setidno(e.target.value)} value={idno} required/>
           Arg: <input type="text" onChange={(e)=>setargtype(e.target.value)} value={argtype} required/>
-          <button type="submit">Submit</button>
+          <button onClick={()=>props.changeChvalueHandler({chvalue:chvalue,idno:idno})} type="submit">Submit</button>
           </form>
       </div>
     

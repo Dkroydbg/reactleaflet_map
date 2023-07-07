@@ -12,34 +12,34 @@ import { useState,useEffect } from "react";
  
 
 
-const Map = () => {
-  const [idno,setidno]=useState();
-  const [chvalue,setchvalue]=useState();
+const Map = (props) => {
+  // const [idno,setidno]=useState();
+  // const [chvalue,setchvalue]=useState();
 
+  // console.log("props in map ", props.chData.chvalue)
   
-  
-  useEffect(()=>{
+  // useEffect(()=>{
     
     
 
-    try {
-    const idn = JSON.parse(window.localStorage.getItem('item1'));
-    const chval = JSON.parse(window.localStorage.getItem('item2'));
-    console.log(idn);
+  //   try {
+  //   const idn = JSON.parse(window.localStorage.getItem('item1'));
+  //   const chval = JSON.parse(window.localStorage.getItem('item2'));
+  //   console.log(idn);
 
-    if(idn){
-      setidno(idn);
-      console.log(idn);
-    }
-    if(chval){  
-      setchvalue(chval);
-      console.log(chval);
-    }
-    } catch (err) {
-      console.log('Error: ', err.message);
-    }
+  //   if(idn){
+  //     setidno(idn);
+  //     console.log(idn);
+  //   }
+  //   if(chval){  
+  //     setchvalue(chval);
+  //     console.log(chval);
+  //   }
+  //   } catch (err) {
+  //     console.log('Error: ', err.message);
+  //   }
        
-  },[idno,chvalue])  
+  // },[idno,chvalue])  
   
   return (
     
@@ -53,40 +53,40 @@ const Map = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {refindata.map((marker)=>(
+      {/* {props==null ?():()} */}
+      {/* {refindata.map((marker)=>(
         <Marker key={marker.id} position={[marker.Latitude,marker.Longitude]} draggable={true} animate={true}>
         <Popup><>
         <h5 className="card-title text-center">CH4 Value</h5>
         <br></br>
               <label><small><b>Refinery:</b></small> {marker.Refinery}</label>
               <hr></hr>
-              <label><small><b>CH4:</b></small> {chvalue}</label>
+              <label><small><b>CH4:</b></small> {props.chvalue}</label>
               <hr></hr>
-              <lable><small><b>ID:</b></small> {idno}</lable>
-              {/*  <p className="card-text">{" "} {chvalue}{", "}{idno}</p> */}
+              <lable><small><b>ID:</b></small> {props.idno}</lable>
+               <p className="card-text">{" "} {chvalue}{", "}{idno}</p>
         </></Popup>
       </Marker>
-      ))}
-
+      ))} */}
       {refindata.map((marker)=>(
         <div key={marker.id}>
         {respiredata.map((resdata)=>(
-          resdata.id==marker.id && resdata.id==idno ?(<Marker key={marker.id} position={[marker.Latitude,marker.Longitude]}  draggable={true} animate={true}>
+          resdata.id==marker.id && resdata.id==props.chData.idno ?(<Marker key={marker.id} position={[marker.Latitude,marker.Longitude]}  draggable={true} animate={true}>
             <Popup>
               {/* {marker.Refinery}{" "} {chvalue}{", "}{idno} */}
               <label><small><b>Refinery:</b></small> {marker.Refinery}</label>
               <hr></hr>
-              <label><small><b>CH4:</b></small> {chvalue}</label>
+              <label><small><b>CH4:</b></small> {props.chData.chvalue}</label>
               <hr></hr>
-              <lable><small><b>ID:</b></small> {idno}</lable>
+              <lable><small><b>ID:</b></small> {props.chData.idno}</lable>
               {/* <p className="card-text">{" "} {chvalue}{", "}{idno}</p> */}
               </Popup>
-            <CircleMarker center={[marker.Latitude,marker.Longitude]} radius={20}>
+            {/* <CircleMarker center={[marker.Latitude,marker.Longitude]} radius={20}>
             
             <Tooltip direction="center"  permanent>
-                       <span>{chvalue}</span>
+                       <span>{props.chData.chvalue}</span>
             </Tooltip>
-            </CircleMarker>
+            </CircleMarker> */}
             </Marker>): null
         ))}
         </div>

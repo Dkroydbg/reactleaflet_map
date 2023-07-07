@@ -1,6 +1,6 @@
 import React from 'react'
-import Map from './Map'
-import DateRangeComp from './DateRangeComp'
+import Map from '../containers/MapContainer'
+import DateRangeContainer from '../containers/DateRangeContainer'
 
 const Front = () => {
   return (
@@ -11,7 +11,7 @@ const Front = () => {
           <Map/>
         </div>
         <div className="col-md-3">
-          <DateRangeComp />
+          <DateRangeContainer />
         </div>
       </div>
     </div>
