@@ -54,7 +54,7 @@ const Map = (props) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {/* {props==null ?():()} */}
-      {/* {refindata.map((marker)=>(
+      {refindata.map((marker)=>(
         <Marker key={marker.id} position={[marker.Latitude,marker.Longitude]} draggable={true} animate={true}>
         <Popup><>
         <h5 className="card-title text-center">CH4 Value</h5>
@@ -64,10 +64,11 @@ const Map = (props) => {
               <label><small><b>CH4:</b></small> {props.chvalue}</label>
               <hr></hr>
               <lable><small><b>ID:</b></small> {props.idno}</lable>
-               <p className="card-text">{" "} {chvalue}{", "}{idno}</p>
+              {/*  <p className="card-text">{" "} {chvalue}{", "}{idno}</p> */}
         </></Popup>
       </Marker>
-      ))} */}
+      ))}
+
       {refindata.map((marker)=>(
         <div key={marker.id}>
         {respiredata.map((resdata)=>(
